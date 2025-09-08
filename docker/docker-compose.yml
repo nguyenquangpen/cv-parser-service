@@ -1,0 +1,18 @@
+services:
+  cv_ai:
+    container_name: cv_ai
+    build:
+      context: ..
+      dockerfile: docker/dockerfile
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8000:8000" 
+    volumes:
+      - .:/app
+    networks:
+      - cv_network
+  
+networks:
+  cv_network:
+    external: true
