@@ -12,7 +12,9 @@ services:
       - ../:/app
     networks:
       - cv_network
-  
+
+    command: python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
 networks:
   cv_network:
     external: true
