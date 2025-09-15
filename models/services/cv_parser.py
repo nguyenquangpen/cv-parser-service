@@ -13,13 +13,7 @@ from models.api.schemas import ..
 
 logger = logging.getLogger(__name__)
 
-# ??? take 2 model
-def getModelPath():
-        current_dir = os.path.dirname(os.path.abspath(__name__))
-        model_path = os.path.join(current_dir, "models", "output")
-        return os.listdir(model_path)
-
-MODEL_PATH = os.path.join("/app", "models", "output", "cv_model.pkl")
+MODEL_PATH = os.path.join("/app", "models", "output", "cv_job_maching.model")
 
 class CVParserService:
     def __init__(self, model=None):
@@ -77,8 +71,17 @@ class CVParserService:
             raise HTTPException(status_code=500, detail="Model not loaded.")
         
         logger.info("Running model prediction.")
-        try:
-            #... 
-            #...
-            prediction_result = self.model.predict([cv_text])
+        
+        mock_data = {
+            pass
+        }
+    
+    async def caculate_math_score(self, cv_text: str, jb_text: str, cv_id: int, jd_id: int | None = None) -> ScoreOutput:
+        if self.model is None:
+            raise HTTPException(status_code=500, detail="Model not loaded.")
+        
+        logger.info("Calculating matching score.")
+        
+        # tien su ly dataset
+
         

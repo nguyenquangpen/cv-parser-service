@@ -13,4 +13,12 @@ python-docx==1.1.0
 
 # torch==2.2.2
 # torchvision==0.17.2
-# spacy==3.x.x         
+# spacy==3.x.x        
+
+gensim
+nltk
+numpy
+pandas
+plotly
+PyPDF2
+requests
