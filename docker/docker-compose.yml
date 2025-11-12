@@ -4,6 +4,8 @@ services:
     build:
       context: ..
       dockerfile: docker/dockerfile
+    env_file:
+      - ../.env
     environment:
       - PYTHONUNBUFFERED=1
     ports:

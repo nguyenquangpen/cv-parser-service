@@ -5,20 +5,32 @@ load_dotenv()
 
 MODEL_PATH = "models/output"
 
-DB_CONFIG = {
-    "dbname": os.environ.get("DB_NAME"),
-    "user": os.environ.get("DB_USER"),
-    "password": os.environ.get("DB_PASSWORD"),
-    "host": os.environ.get("DB_HOST"),
-    "port": int(os.environ.get("DB_PORT")),
-}
+DB_HOST = os.environ.get("DB_HOST", "localhost")
+DB_NAME = os.environ.get("DB_NAME", "cv_web")
+DB_USER = os.environ.get("DB_USER", "cv_web")
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "testuser")
+DB_PORT = int(os.environ.get("DB_PORT", 5432))
 
-RESUME_TABLE_NAME = "overview_resume"
-JD_TABLE_NAME = "overview_jobdescription"
 
-# matching Processing settings
-MATCH_CONCURRENCY = 10        # số task chạy song song
-MATCH_TIMEOUT_SEC = 30.0      # timeout tổng cho toàn bộ quá trình (giây)
-MATCH_MAX_PAIRS = 2000        # số cặp Resume–JD tối đa xử lý trong 1 lần
-PER_TASK_TIMEOUT = 30.0       # timeout cho mỗi task con (giây)
+ALLOWED_FILE_TYPES = [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.ms-excel',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'application/vnd.ms-powerpoint',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    'text/plain',
+    'text/html',
+    'text/csv',
+    'application/rtf',
+    'application/vnd.oasis.opendocument.text',
+    'application/vnd.oasis.opendocument.spreadsheet',
+    'application/vnd.oasis.opendocument.presentation',
+    'application/epub+zip',
+]
 
+
+SQLALCHEMY_DATABASE_URL = (
+    f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+)
