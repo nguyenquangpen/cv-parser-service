@@ -1,2 +1,7 @@
 __pycache__/
 .env
+
+# model
+NER_Candidate_IE_model
+NER_HardSoftSkill_Extract_model
+cv_job_maching.model
