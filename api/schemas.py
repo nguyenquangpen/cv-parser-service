@@ -31,3 +31,9 @@ class ProcessAIResponse(BaseModel):
     status: str
     message: str
     results: Optional[List[dict]] = None
+
+class GenerateJdRequest(BaseModel):
+    prompt_content: str
+
+class GenerateJdResponse(BaseModel):
+    generated_jd: str
